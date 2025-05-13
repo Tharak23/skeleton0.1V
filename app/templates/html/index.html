@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI2D - AI-Powered 2D Game Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .description {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .examples {
+            margin-top: 20px;
+        }
+        .example {
+            cursor: pointer;
+            color: #0066cc;
+            margin-right: 10px;
+        }
+        #loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .error-message {
+            color: #f44336;
+            background-color: #ffebee;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎮 AI2D - Game Generator</h1>
+    
+    <div class="description">
+        <p>Enter a text prompt describing the game you want to create. Our AI will generate a playable 2D game based on your description.</p>
+        <p><strong>Note:</strong> This demo version uses templates to quickly generate games based on keywords in your prompt.</p>
+    </div>
+    
+    <div class="form-container">
+        <form action="/generate" method="post" id="gameForm">
+            <label for="prompt">Game Description:</label>
+            <textarea id="prompt" name="prompt" placeholder="Example: Create a tic tac toe game with a space theme" required></textarea>
+            
+            <button type="submit">Generate Game</button>
+        </form>
+        
+        <div class="examples">
+            <p>Try these examples:</p>
+            <span class="example" onclick="setExample('Create a tic tac toe game')">Tic Tac Toe</span>
+            <span class="example" onclick="setExample('Create a snake game where you collect food')">Snake</span>
+            <span class="example" onclick="setExample('Create a pong game for 2 players')">Pong</span>
+            <span class="example" onclick="setExample('Create a breakout game with colorful bricks')">Breakout</span>
+        </div>
+        
+        <div id="loading">
+            <p>Generating your game...</p>
+            <div class="spinner"></div>
+        </div>
+        
+        <div id="error-message" class="error-message"></div>
+    </div>
+    
+    <script>
+        function setExample(text) {
+            document.getElementById('prompt').value = text;
+            // Don't auto-submit, just populate the field
+        }
+        
+        function submitGameForm() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+            
+            const prompt = document.getElementById('prompt').value;
+            
+            fetch('/generate', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `prompt=${encodeURIComponent(prompt)}`
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Server error: ${response.status}`);
+                }
+                return response.json().catch(err => {
+                    console.error('JSON parsing error:', err);
+                    throw new Error('Failed to parse server response. The response was not valid JSON.');
+                });
+            })
+            .then(data => {
+                if (!data || !data.game_id) {
+                    throw new Error('Invalid response from server (missing game_id)');
+                }
+                // Redirect to the game page
+                window.location.href = `/play/${data.game_id}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error-message').textContent = `Error: ${error.message || 'Unknown error occurred'}`;
+                document.getElementById('error-message').style.display = 'block';
+            });
+        }
+        
+        document.getElementById('gameForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitGameForm();
+        });
+    </script>
+</body>
+</html> 

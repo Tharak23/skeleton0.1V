@@ -1,0 +1,188 @@
+[
+    {
+      "game_type": "tic_tac_toe",
+      "main_character": "X and O",
+      "mechanics": ["place mark", "turn-based"],
+      "style": "classic",
+      "theme": "normal",
+      "difficulty": "easy",
+      "assets_needed": ["X sprite", "O sprite", "grid", "win sound"]
+    },
+
+    {
+      "game_type": "connect_four",
+      "main_character": "red and yellow discs",
+      "mechanics": ["drop disc", "gravity", "turn-based"],
+      "style": "modern",
+      "theme": "arcade",
+      "difficulty": "medium",
+      "assets_needed": ["red disc", "yellow disc", "grid board", "drop sound"]
+    },
+    {
+      "game_type": "memory_match",
+      "main_character": "cards",
+      "mechanics": ["flip", "match pairs"],
+      "style": "cartoon",
+      "theme": "fruits",
+      "difficulty": "easy",
+      "assets_needed": ["card front", "fruit images", "flip sound"]
+    },
+    {
+      "game_type": "snake_game",
+      "main_character": "snake",
+      "mechanics": ["move", "eat", "grow"],
+      "style": "pixel",
+      "theme": "jungle",
+      "difficulty": "medium",
+      "assets_needed": ["snake sprite", "fruit", "jungle background"]
+    },
+
+    {
+      "game_type": "maze_escape",
+      "main_character": "rat",
+      "mechanics": ["move", "find exit"],
+      "style": "top-down",
+      "theme": "lab",
+      "difficulty": "hard",
+      "assets_needed": ["maze tiles", "rat sprite", "exit door", "footstep sound"]
+    },
+    {
+      "game_type": "sudoku",
+      "main_character": "numbers",
+      "mechanics": ["fill cell", "logic"],
+      "style": "clean",
+      "theme": "digital",
+      "difficulty": "hard",
+      "assets_needed": ["number fonts", "grid", "highlight cell"]
+    },
+    {
+      "game_type": "checkers",
+      "main_character": "red and black pieces",
+      "mechanics": ["jump", "move diagonally"],
+      "style": "classic",
+      "theme": "wooden board",
+      "difficulty": "medium",
+      "assets_needed": ["red piece", "black piece", "board", "move sound"]
+    },
+    {
+      "game_type": "minesweeper",
+      "main_character": "flag and mine",
+      "mechanics": ["click", "flag", "number reveal"],
+      "style": "minimal",
+      "theme": "military",
+      "difficulty": "hard",
+      "assets_needed": ["mine icon", "flag icon", "tile sprites"]
+    },
+
+    {
+      "game_type": "2048",
+      "main_character": "number tiles",
+      "mechanics": ["merge", "slide"],
+      "style": "flat",
+      "theme": "math puzzle",
+      "difficulty": "medium",
+      "assets_needed": ["tiles", "merge animation", "sound effects"]
+    },
+
+    {
+      "game_type": "ludo",
+      "main_character": "colored pawns",
+      "mechanics": ["dice roll", "move", "capture"],
+      "style": "traditional",
+      "theme": "family board game",
+      "difficulty": "medium",
+      "assets_needed": ["dice", "pawn sprites", "ludo board"]
+    },
+
+    {
+      "game_type": "chess",
+      "main_character": "chess pieces",
+      "mechanics": ["turn-based", "capture", "checkmate"],
+      "style": "modern",
+      "theme": "strategy",
+      "difficulty": "hard",
+      "assets_needed": ["chess board", "white and black pieces", "move highlights"]
+    }, 
+    {
+      "game_type": "rock_paper_scissors",
+      "main_character": "hand icons",
+      "mechanics": ["select", "compare"],
+      "style": "minimal",
+      "theme": "challenge",
+      "difficulty": "easy",
+      "assets_needed": ["rock", "paper", "scissors icons"]
+    },
+    {
+      "game_type": "whack_a_mole",
+      "main_character": "mole",
+      "mechanics": ["click", "time limit"],
+      "style": "cartoon",
+      "theme": "garden",
+      "difficulty": "medium",
+      "assets_needed": ["mole sprite", "hammer icon", "background", "whack sound"]
+    },
+    {
+      "game_type": "pong",
+      "main_character": "ball and paddles",
+      "mechanics": ["bounce", "move paddle"],
+      "style": "retro",
+      "theme": "arcade",
+      "difficulty": "medium",
+      "assets_needed": ["ball sprite", "paddle", "score display"]
+    },
+    {
+      "game_type": "battleship",
+      "main_character": "ships",
+      "mechanics": ["guess", "turn-based", "grid"],
+      "style": "navy",
+      "theme": "ocean battle",
+      "difficulty": "hard",
+      "assets_needed": ["ship sprites", "hit/miss effects", "grid board"]
+    },
+    {
+      "game_type": "tetris",
+      "main_character": "blocks",
+      "mechanics": ["rotate", "fall", "clear lines"],
+      "style": "neon",
+      "theme": "retro",
+      "difficulty": "medium",
+      "assets_needed": ["block shapes", "grid", "sound effects"]
+    },
+    {
+      "game_type": "simon_says",
+      "main_character": "buttons",
+      "mechanics": ["repeat pattern", "memory"],
+      "style": "light-up",
+      "theme": "reaction test",
+      "difficulty": "medium",
+      "assets_needed": ["colored buttons", "sound cues"]
+    },
+    {
+      "game_type": "board_race",
+      "main_character": "characters racing",
+      "mechanics": ["roll dice", "move", "boost"],
+      "style": "cartoon",
+      "theme": "desert race",
+      "difficulty": "easy",
+      "assets_needed": ["track", "character sprites", "dice"]
+    },
+    {
+      "game_type": "drawing_guess",
+      "main_character": "pen and board",
+      "mechanics": ["draw", "guess"],
+      "style": "doodle",
+      "theme": "pictionary",
+      "difficulty": "easy",
+      "assets_needed": ["drawing canvas", "color palette", "timer"]
+    },
+    {
+      "game_type": "sliding_puzzle",
+      "main_character": "tiles",
+      "mechanics": ["slide", "arrange"],
+      "style": "photo-based",
+      "theme": "nature image",
+      "difficulty": "medium",
+      "assets_needed": ["puzzle image", "tile frames"]
+    }
+  ]
+  

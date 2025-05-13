@@ -1,0 +1,41 @@
+# 🎮 AI2D - AI-Powered 2D Game Generator
+
+## ✅ Skeleton Version (MVP)
+
+### Goal:
+Build a basic prototype where a user enters a text prompt (e.g. "Create a tic tac toe game in space theme") and:
+1. An NLP model (Phi-2) parses the prompt and outputs **JSON game logic** (hardcoded or mock for now).
+2. The backend converts the JSON into **Phaser.js game code** (basic game template).
+3. The browser renders and plays the game with placeholder visuals (no advanced themes or graphics).
+4. No AI image generation or auto error correction yet.
+5. Simple local-only backend (FastAPI/Flask) for receiving prompt and responding with playable game.
+
+---
+
+## 🚀 Full Version (Future Build)
+
+### Features:
+- Use **fine-tuned Phi-2 or Mistral** to handle fuzzy prompts and create detailed structured JSON game logic.
+- Integrate **CodeLlama / DeepSeek Coder** to generate optimized JavaScript game code.
+- Add **Stable Diffusion** or similar to generate themed 2D assets from the prompt (e.g. “rainforest”, “space”).
+- Add **automated testing agents** to check if the game logic works and fix common bugs.
+- Build a credit system, account management, and game preview history.
+- Deploy on scalable infra (Render → Railway → AWS) and integrate with your existing PHP site as a feature.
+
+---
+
+## 🧰 Stack Summary
+
+| Component       | Tool/Stack               | Purpose                           |
+|----------------|--------------------------|-----------------------------------|
+| NLP Model       | Phi-2 (skeleton), Mistral (future) | Prompt → JSON logic            |
+| Code Generator  | Template JS (skeleton), CodeLlama (future) | JSON → JS Game Code       |
+| Game Engine     | Phaser.js                | Render 2D game in browser         |
+| Backend         | FastAPI or Flask         | API to handle prompt/game logic   |
+| Image Generator | (Future) Stable Diffusion| Create themed visual assets       |
+| Deployment      | Local (now), Render/AWS (future) | Serve backend API        |
+| Website         | PHP + HTML (existing)    | Frontend UI + payment system      |
+
+---
+
+### ✅ Let’s Build the Skeleton First, Then Scale. No APIs. All Local AI.

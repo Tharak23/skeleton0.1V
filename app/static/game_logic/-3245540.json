@@ -1,0 +1,27 @@
+{
+  "gameType": "turnBased",
+  "name": "Tic-Tac-Toe",
+  "description": "Classic Tic-Tac-Toe game for two players",
+  "board": {
+    "size": 3,
+    "cells": 9
+  },
+  "players": {
+    "count": 2,
+    "symbols": [
+      "X",
+      "O"
+    ]
+  },
+  "rules": {
+    "winCondition": "3 in a row (horizontal, vertical, or diagonal)",
+    "drawCondition": "All cells filled with no winner"
+  },
+  "assets": {
+    "background": "plain",
+    "markers": [
+      "X",
+      "O"
+    ]
+  }
+}

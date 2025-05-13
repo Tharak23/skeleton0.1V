@@ -1,0 +1,25 @@
+{
+  "gameType": "realtime",
+  "name": "Pong",
+  "description": "Two-player paddle game where you hit a ball back and forth",
+  "controls": {
+    "type": "vertical",
+    "player1": [
+      "W",
+      "S"
+    ],
+    "player2": [
+      "UP",
+      "DOWN"
+    ]
+  },
+  "rules": {
+    "winCondition": "First player to reach 11 points",
+    "scoreCondition": "When opponent misses the ball"
+  },
+  "assets": {
+    "background": "plain",
+    "paddles": 2,
+    "ball": 1
+  }
+}

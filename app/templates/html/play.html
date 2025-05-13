@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI2D - Play Your Generated Game</title>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+        }
+        #game-container {
+            margin: 0 auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .controls {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .back-button {
+            background-color: #f44336;
+        }
+        .back-button:hover {
+            background-color: #d32f2f;
+        }
+        .toggle-button {
+            background-color: #2196F3;
+        }
+        .toggle-button:hover {
+            background-color: #0b7dda;
+        }
+        #json-container {
+            margin: 20px auto;
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: none;
+        }
+        pre {
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI2D - Play Your Generated Game</h1>
+    </header>
+    
+    <div id="game-container"></div>
+    
+    <div class="controls">
+        <div>
+            <a href="/" class="button back-button">← Back to Generator</a>
+            <button id="restart-button" class="button">Restart Game</button>
+        </div>
+        <div>
+            <button id="toggle-json-button" class="button toggle-button">Show Game Logic JSON</button>
+        </div>
+    </div>
+    
+    <div id="json-container">
+        <h2>Game Logic JSON</h2>
+        <p>This is the JSON game logic used to generate your game:</p>
+        <pre id="json-content"></pre>
+    </div>
+    
+    <script>
+        // Load the generated game code
+        const gameScript = document.createElement('script');
+        gameScript.src = "/static/games/{{ game_id }}.js";
+        document.body.appendChild(gameScript);
+        
+        // Add restart functionality
+        document.getElementById('restart-button').addEventListener('click', function() {
+            location.reload();
+        });
+        
+        // Toggle JSON display
+        document.getElementById('toggle-json-button').addEventListener('click', function() {
+            const jsonContainer = document.getElementById('json-container');
+            const button = document.getElementById('toggle-json-button');
+            
+            if (jsonContainer.style.display === 'none' || !jsonContainer.style.display) {
+                jsonContainer.style.display = 'block';
+                button.textContent = 'Hide Game Logic JSON';
+                
+                // Load JSON content if not already loaded
+                const jsonContent = document.getElementById('json-content');
+                if (!jsonContent.textContent) {
+                    fetch('/game-logic/{{ game_id }}')
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(`Error ${response.status}: ${response.statusText}`);
+                            }
+                            return response.json().catch(err => {
+                                throw new Error('Failed to parse JSON response');
+                            });
+                        })
+                        .then(data => {
+                            if (!data) {
+                                throw new Error('Empty response received');
+                            }
+                            jsonContent.textContent = JSON.stringify(data, null, 2);
+                        })
+                        .catch(error => {
+                            console.error('Error loading JSON:', error);
+                            jsonContent.textContent = 'Error loading JSON: ' + error.message;
+                        });
+                }
+            } else {
+                jsonContainer.style.display = 'none';
+                button.textContent = 'Show Game Logic JSON';
+            }
+        });
+    </script>
+</body>
+</html> 

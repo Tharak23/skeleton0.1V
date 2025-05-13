@@ -1,0 +1,25 @@
+{
+  "gameType": "continuous",
+  "name": "Snake",
+  "description": "Classic snake game where you collect food and grow longer",
+  "controls": {
+    "type": "directional",
+    "keys": [
+      "UP",
+      "DOWN",
+      "LEFT",
+      "RIGHT"
+    ]
+  },
+  "rules": {
+    "winCondition": "Score as many points as possible",
+    "loseCondition": "Hit walls or your own tail"
+  },
+  "assets": {
+    "background": "plain",
+    "player": "snake",
+    "collectibles": [
+      "food"
+    ]
+  }
+}

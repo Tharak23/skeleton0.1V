@@ -1,0 +1,22 @@
+{
+  "gameType": "continuous",
+  "name": "Breakout",
+  "description": "Destroy bricks by bouncing a ball off a paddle",
+  "controls": {
+    "type": "horizontal",
+    "keys": [
+      "LEFT",
+      "RIGHT"
+    ]
+  },
+  "rules": {
+    "winCondition": "Destroy all bricks",
+    "loseCondition": "Ball falls below paddle"
+  },
+  "assets": {
+    "background": "plain",
+    "paddle": 1,
+    "ball": 1,
+    "bricks": "multiple rows"
+  }
+}
